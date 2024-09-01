@@ -1,0 +1,70 @@
+/*
+Option #1: Calculate Average Withholding
+
+Create a program that will calculate the weekly average tax withholding for a customer given the following
+weekly income guidelines:
+
+    Income less than $500: tax rate 10%
+    Incomes greater than/equal to $500 and less than $1500: tax rate 15%
+    Incomes greater than/equal to $1500 and less than $2500: tax rate 20%
+    Incomes greater than/equal to $2500: tax rate 30%
+
+Compile and submit your pseudocode, source code, and screenshots of the application executing the application,
+the results and GIT repository in a single document.
+*/
+
+Pseudocode:
+
+BEGIN
+
+    // Create a scanner object to capture user input
+    CREATE userInput AS Scanner
+
+    // Prompt the user for their income
+    PRINT "Enter your income (whole number): "
+    PRINT "> "
+
+    // Store user input in the variable 'income'
+    SET income TO userInput.nextInt()
+
+    // Define constants for tax rates
+    SET lowTaxRate TO 0.1
+    SET midTaxRate TO 0.15
+    SET highTaxRate TO 0.2
+    SET veryHighTaxRate TO 0.3
+
+    // Define constants for income thresholds
+    SET lowThreshold TO 500
+    SET midThreshold TO 1500
+    SET highThreshold TO 2500
+
+    // Declare variables to store the tax withholding and the used tax rate
+    SET taxWithholding TO 0
+    SET usedTaxRate TO 0
+
+    // Determine tax withholding based on income
+    IF income < lowThreshold THEN
+        SET taxWithholding TO income * lowTaxRate
+        SET usedTaxRate TO lowTaxRate
+    ELSE IF income < midThreshold THEN
+        SET taxWithholding TO income * midTaxRate
+        SET usedTaxRate TO midTaxRate
+    ELSE IF income < highThreshold THEN
+        SET taxWithholding TO income * highTaxRate
+        SET usedTaxRate TO highTaxRate
+    ELSE IF income >= highThreshold THEN
+        SET taxWithholding TO income * veryHighTaxRate
+        SET usedTaxRate TO veryHighTaxRate
+    ELSE
+        // Handle unexpected inputs
+        SET taxWithholding TO 0
+        SET usedTaxRate TO 0
+    END IF
+
+    // Display the results
+    PRINT "Your weekly tax withholding is: "
+    PRINT "$" + taxWithholding
+    PRINT "Based on an income of: $" + income
+    PRINT "And a tax rate of: " + (usedTaxRate * 100) + "%"
+
+END
